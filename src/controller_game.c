@@ -19,9 +19,9 @@ void initGame(Game *game)
 
     srand(time(NULL));
 
-    initBall(&ball, &window);
-    initWindow(&window);
     initGameGraphics();
+    initWindow(&window);
+    initBall(&ball, &window);
 
     game->ball = ball;
     game->window = window;

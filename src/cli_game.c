@@ -19,13 +19,14 @@ void initGameGraphics()
 void drawGame(Game *game)
 {
     clear();
-    drawBall(&game->ball);
     printGameStatus(game);
+    drawBall(&game->ball);
     refresh();
 }
 
 void printGameStatus(Game *game)
 {
+    printw("Level %d\n", game->level);
     printw("Window Size %d, %d\n", game->window.x, game->window.y);
     printw("Position %d, %d\n", game->ball.x, game->ball.y);
     printw("Offset %d", game->ball.offset);
