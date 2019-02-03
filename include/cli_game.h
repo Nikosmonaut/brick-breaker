@@ -3,6 +3,7 @@
 
 #include "window.h"
 #include "ball.h"
+#include "game.h"
 
 void initGameGraphics();
 void drawGame(Game *game);

@@ -4,8 +4,8 @@
 #include "ball.h"
 #include "cli_ball.h"
 #include "cli_platform.h"
+#include "cli_game.h"
 #include "window.h"
-#include "controller_game.h"
 
 void initGameGraphics()
 {
