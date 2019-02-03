@@ -1,7 +1,7 @@
 #ifndef BALL_H_INCLUDED
 #define BALL_H_INCLUDED
 
-#include <window.h>
+#include "window.h"
 
 typedef struct
 {
@@ -13,8 +13,7 @@ typedef struct
     int offset;
 } Ball;
 
-void drawBall(Ball *ball);
-void initBall(Ball *ball, WindowSize *windowSize);
-void nextStep(Ball *ball, WindowSize *windowSize);
+void initBall(Ball *ball, Window *window);
+void moveForward(Ball *ball, Window *window);
 
 #endif

@@ -5,6 +5,6 @@ typedef struct
 {
     int x;
     int y;
-} WindowSize;
+} Window;
 
 #endif

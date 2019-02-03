@@ -1,6 +1,6 @@
 #### PROJECT SETTINGS ####
 # The name of the executable to be created
-BIN_NAME := brick-breaker 
+BIN_NAME := brick-breaker
 # Compiler used
 CXX = gcc
 # Extension of source files used in the project

@@ -1,7 +1,13 @@
-#include <game.h>
+#include "game.h"
+#include "controller_game.h"
 
 int main()
 {
-    initGame();
+    Game game;
+
+    initGame(&game);
+    startGame(&game);
+    endGame();
+
     return 0;
 }
