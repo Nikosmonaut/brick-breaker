@@ -40,7 +40,8 @@ void startGame(Game *game)
     while (userCommand != 'q')
     {
         drawGame(game);
-        moveForward(&game->ball, &game->window);
+        moveBallForward(&game->ball, &game->window);
+        movePlatform(&game->platform, &game->window, userCommand);
         userCommand = getch();
         usleep(SPEED);
     }

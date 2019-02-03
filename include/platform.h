@@ -11,5 +11,6 @@ typedef struct
 } Platform;
 
 void initPlatform(Platform *platform, Window *window);
+void movePlatform(Platform *platform, Window *window, int userCommand);
 
 #endif

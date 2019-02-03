@@ -14,6 +14,6 @@ typedef struct
 } Ball;
 
 void initBall(Ball *ball, Window *window);
-void moveForward(Ball *ball, Window *window);
+void moveBallForward(Ball *ball, Window *window);
 
 #endif

@@ -14,7 +14,7 @@ void initBall(Ball *ball, Window *window)
     ball->offset = ball->y - (ball->angle * ball->x);
 }
 
-void moveForward(Ball *ball, Window *window)
+void moveBallForward(Ball *ball, Window *window)
 {
     ball->y += ball->direction;
     ball->x = (ball->y - ball->offset) / ball->angle;
