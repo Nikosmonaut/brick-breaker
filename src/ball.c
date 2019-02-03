@@ -32,6 +32,20 @@ void moveBallForward(Ball *ball, Window *window)
     }
 }
 
+static float calculateAngle(Platform *platform, float ballX)
+{
+    float platformLeft = platform->x;
+    float platformRight = platform->x + platform->size;
+    float platformMiddle = platformLeft + platform->size / 2;
+
+    if (ballX < platformMiddle)
+    {
+        ballX += (platformRight - platformMiddle);
+    }
+
+    return (ballX - platformLeft) / 5;
+}
+
 bool platformCollision(Ball *ball, Platform *platform)
 {
     if (ball->y < platform->y)
@@ -44,6 +58,7 @@ bool platformCollision(Ball *ball, Platform *platform)
 
     if (ball->x >= platformLeft && ball->x <= platformRight)
     {
+        // ball->angle *= calculateAngle(platform, ball->x) * -1;
         ball->angle *= -1;
         ball->direction *= -1;
         ball->offset = ball->offset + (ball->y - ball->offset) * 2;
