@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +12,7 @@
 #include "cli_game.h"
 #include "cli_window.h"
 
-#define SPEED 15000
+#define REFRESH_RATE 7000
 
 void initGame(Game *game)
 {
@@ -36,14 +37,26 @@ void initGame(Game *game)
 void startGame(Game *game)
 {
     int userCommand;
+    bool inGame = true;
 
     while (userCommand != 'q')
     {
         drawGame(game);
-        moveBallForward(&game->ball, &game->window);
+        inGame = platformCollision(&game->ball, &game->platform);
+        if (inGame == false)
+        {
+            break;
+        }
         movePlatform(&game->platform, &game->window, userCommand);
+        moveBallForward(&game->ball, &game->window);
         userCommand = getch();
-        usleep(SPEED);
+        usleep(REFRESH_RATE);
+    }
+
+    while (userCommand != 'q')
+    {
+        userCommand = getch();
+        usleep(REFRESH_RATE);
     }
 }
 

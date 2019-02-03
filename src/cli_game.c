@@ -30,8 +30,8 @@ void printGameStatus(Game *game)
 {
     printw("Level %d\n", game->level);
     printw("Window Size %d, %d\n", game->window.x, game->window.y);
-    printw("Position %d, %d\n", game->ball.x, game->ball.y);
-    printw("Offset %d", game->ball.offset);
+    printw("Position %f, %f\n", game->ball.x, game->ball.y);
+    printw("Platform %f", game->platform.x);
 }
 
 void endGameGraphics()

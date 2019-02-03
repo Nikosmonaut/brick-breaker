@@ -5,8 +5,9 @@
 
 typedef struct
 {
-    int x;
-    int y;
+    float x;
+    float y;
+    float speed;
     int size;
 } Platform;
 
