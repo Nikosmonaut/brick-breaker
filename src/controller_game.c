@@ -6,6 +6,7 @@
 
 #include "ball.h"
 #include "window.h"
+#include "platform.h"
 #include "controller_game.h"
 #include "cli_game.h"
 #include "cli_window.h"
@@ -16,15 +17,18 @@ void initGame(Game *game)
 {
     Ball ball;
     Window window;
+    Platform platform;
 
     srand(time(NULL));
 
     initGameGraphics();
     initWindow(&window);
     initBall(&ball, &window);
+    initPlatform(&platform, &window);
 
     game->ball = ball;
     game->window = window;
+    game->platform = platform;
     game->level = 1;
     game->life = 3;
 }

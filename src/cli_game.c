@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "ball.h"
 #include "cli_ball.h"
+#include "cli_platform.h"
 #include "window.h"
 #include "controller_game.h"
 
@@ -21,6 +22,7 @@ void drawGame(Game *game)
     clear();
     printGameStatus(game);
     drawBall(&game->ball);
+    drawPlatform(&game->platform);
     refresh();
 }
 
