@@ -1,7 +1,6 @@
 #ifndef PLATFORM_H_INCLUDED
 #define PLATFORM_H_INCLUDED
 
-#include "platform.h"
 #include "window.h"
 
 typedef struct
