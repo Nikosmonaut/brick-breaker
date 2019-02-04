@@ -5,6 +5,9 @@
 #include "window.h"
 #include "platform.h"
 
+#define PI 3.14159265
+#define MAX_ANGLE (PI / 8)
+
 typedef struct
 {
     float x;

@@ -8,17 +8,18 @@
 #include "ball.h"
 #include "window.h"
 #include "platform.h"
+#include "wall.h"
 #include "controller_game.h"
 #include "cli_game.h"
 #include "cli_window.h"
 
-#define REFRESH_RATE 7000
 
 void initGame(Game *game)
 {
     Ball ball;
     Window window;
     Platform platform;
+    Wall wall;
 
     srand(time(NULL));
 
@@ -26,10 +27,12 @@ void initGame(Game *game)
     initWindow(&window);
     initBall(&ball, &window);
     initPlatform(&platform, &window);
+    initWall(&wall);
 
     game->ball = ball;
     game->window = window;
     game->platform = platform;
+    game->wall = wall;
     game->level = 1;
     game->life = 3;
 }

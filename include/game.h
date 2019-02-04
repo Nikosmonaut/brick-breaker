@@ -2,8 +2,9 @@
 #define GAME_H_INCLUDED
 
 #include "ball.h"
-#include "window.h"
 #include "platform.h"
+#include "wall.h"
+#include "window.h"
 typedef struct
 {
     int level;
@@ -11,6 +12,7 @@ typedef struct
     Ball ball;
     Window window;
     Platform platform;
+    Wall wall;
 } Game;
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "window.h"
 
+#define PLATFORM_SIZE 11
 typedef struct
 {
     float x;

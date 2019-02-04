@@ -4,8 +4,6 @@
 #include <math.h>
 #include "ball.h"
 
-#define PI 3.14159265
-#define MAX_ANGLE (PI / 8)
 
 /**
  * Calculate next angle after a wall collision

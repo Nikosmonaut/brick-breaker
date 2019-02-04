@@ -3,6 +3,8 @@
 
 #include "game.h"
 
+#define REFRESH_RATE 7000
+
 void initGame(Game *game);
 void startGame(Game *game);
 void endGame();
