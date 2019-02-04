@@ -4,10 +4,12 @@
 #include "brick.h"
 
 #define BRICK_SIZE 10
+#define BRICK_COUNT 3
 
 typedef struct
 {
     Brick *brickList;
+    int brickCount;
 } Wall;
 
 void initWall(Wall *wall);

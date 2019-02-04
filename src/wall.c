@@ -1,18 +1,16 @@
 #include <stdlib.h>
 #include "wall.h"
 
-
 void initWall(Wall *wall)
 {
-    wall->brickList = malloc(3 * sizeof(Brick));
-    Brick brickList[3];
-    for (int i = 0; i < 3; i++)
-    {
-        (brickList[i]).x = BRICK_SIZE * (i + 1);
-        (brickList[i]).y = 6;
-        (brickList[i]).size = BRICK_SIZE;
-        (brickList[i]).life = 1;
-    }
+    wall->brickList = malloc(BRICK_COUNT * sizeof(Brick));
+    wall->brickCount = BRICK_COUNT;
 
-    wall->brickList = brickList;
+    for (int i = 0; i < BRICK_COUNT; i++)
+    {
+        wall->brickList[i].x = BRICK_SIZE * (i + 1);
+        wall->brickList[i].y = 6;
+        wall->brickList[i].size = BRICK_SIZE;
+        wall->brickList[i].life = 1;
+    }
 }

@@ -5,6 +5,7 @@
 #include "cli_ball.h"
 #include "cli_platform.h"
 #include "cli_game.h"
+#include "cli_wall.h"
 #include "window.h"
 
 void initGameGraphics()
@@ -23,6 +24,8 @@ void drawGame(Game *game)
     printGameStatus(game);
     drawBall(&game->ball);
     drawPlatform(&game->platform);
+    drawWall(&game->wall);
+
     refresh();
 }
 
