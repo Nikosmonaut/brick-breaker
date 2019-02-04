@@ -5,6 +5,7 @@
 #include "ball.h"
 
 #define PI 3.14159265
+#define MAX_ANGLE (PI / 8)
 
 /**
  * Calculate next angle after a wall collision
@@ -19,13 +20,14 @@ static float calculateReflexionAngle(float angle, char contactAxis);
  * Near the center little angle
  * Near border wide angle
  */
-static float calculateBiasedReflexionAngle(Platform *platform, float ballX);
+static float calculateBiasedReflexionAngle(float distance, float x, float angle);
 
 void initBall(Ball *ball, Window *window)
 {
     ball->x = window->x / 2;
     ball->y = window->y - 2;
-    ball->angle = 5 * PI / 4;
+    float randomAngle = (float)rand() / (float)(RAND_MAX / (PI - 2 * MAX_ANGLE));
+    ball->angle = randomAngle;
     ball->speed = 0.2;
 }
 
@@ -57,7 +59,7 @@ bool platformCollision(Ball *ball, Platform *platform)
 
     if (ball->x >= platformLeft && ball->x <= platformRight)
     {
-        ball->angle = calculateReflexionAngle(ball->angle, 'x');
+        ball->angle = calculateBiasedReflexionAngle(platform->size, ball->x - platform->x, ball->angle);
 
         return true;
     }
@@ -69,15 +71,7 @@ static float calculateReflexionAngle(float angle, char contactAxis)
 {
     if (contactAxis == 'y')
     {
-        if (angle <= PI)
-        {
-            return PI - angle;
-        }
-        if (angle > PI)
-        {
-            float normalizedAngle = 2 * PI - angle;
-            return PI - normalizedAngle;
-        }
+        return PI - angle;
     }
 
     if (contactAxis == 'x')
@@ -88,18 +82,31 @@ static float calculateReflexionAngle(float angle, char contactAxis)
     return PI;
 }
 
-static float calculateBiasedReflexionAngle(Platform *platform, float ballX)
+static float calculateBiasedReflexionAngle(float distance, float x, float angle)
 {
-    float platformLeft = platform->x;
-    float platformRight = platform->x + platform->size;
-    float platformMiddle = platformLeft + platform->size / 2;
+    float nextReflexionAngle = calculateReflexionAngle(angle, 'x');
 
-    if (ballX < platformMiddle)
+    float halfDistance = distance / 2;
+    float distanceFromMiddle = fabs(x - halfDistance);
+
+    float percentDistanceFromMiddle = 100 - (distanceFromMiddle / halfDistance * 100);
+    float stepAngle = (PI / 2 - MAX_ANGLE) / 100;
+    float relativeAngle = percentDistanceFromMiddle * stepAngle;
+
+    if (nextReflexionAngle < PI / 2)
     {
-        ballX += (platformMiddle - ballX);
+        return relativeAngle + MAX_ANGLE;
     }
 
-    float percent = (ballX - platformLeft) / (platformRight - platformLeft) * 100;
+    if (nextReflexionAngle < PI)
+    {
+        return 5 * MAX_ANGLE - relativeAngle;
+    }
 
-    return percent;
+    if (nextReflexionAngle < 3 * PI / 2)
+    {
+        return PI + relativeAngle + MAX_ANGLE;
+    }
+
+    return 2 * PI - relativeAngle - MAX_ANGLE;
 }
