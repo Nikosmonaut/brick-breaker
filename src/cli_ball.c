@@ -3,5 +3,5 @@
 
 void drawBall(Ball *ball)
 {
-    mvprintw(ball->y, ball->x, "o");
+    mvaddch(ball->y, ball->x, 'o');
 }

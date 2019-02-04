@@ -7,7 +7,7 @@
 
 void initPlatform(Platform *platform, Window *window)
 {
-    platform->size = 10;
+    platform->size = 11;
     platform->speed = 4.2;
     platform->x = (window->x / 2) - (platform->size / 2);
     platform->y = window->y - 1;

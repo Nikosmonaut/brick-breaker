@@ -10,9 +10,7 @@ typedef struct
     float x;
     float y;
     float angle;
-    float direction;
     float speed;
-    float offset;
 } Ball;
 
 void initBall(Ball *ball, Window *window);

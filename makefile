@@ -19,7 +19,7 @@ DCOMPILE_FLAGS = -D DEBUG
 INCLUDES = -I ./include
 # General linker settings
 #LINK_FLAGS =-lSDL2 -lSDL2main
-LINK_FLAGS =-lncurses
+LINK_FLAGS =-lncurses -lm
 # Additional release-specific linker settings
 RLINK_FLAGS =
 # Additional debug-specific linker settings
