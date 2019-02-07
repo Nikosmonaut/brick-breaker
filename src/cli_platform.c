@@ -9,8 +9,10 @@ void drawPlatform(Platform *platform)
     char *platformShape = malloc(platform->size * sizeof(char));
     for (int i = 0; i < platform->size; i++)
     {
-        strcat(platformShape, "=");
+        platformShape[i] = '=';
     }
+
+    platformShape[platform->size] = '\0';
 
     mvprintw(platform->y, platform->x, platformShape);
     free(platformShape);

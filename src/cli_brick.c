@@ -6,12 +6,13 @@
 
 void drawBrick(Brick *brick)
 {
-
-    char *brickShape = malloc(brick->size * sizeof(char));
+    char *brickShape = malloc(brick->size * sizeof(char) + 1);
     for (int i = 0; i < brick->size; i++)
     {
-        strcat(brickShape, "=");
+        brickShape[i] = '=';
     }
+
+    brickShape[brick->size] = '\0';
 
     mvprintw(brick->y, brick->x, brickShape);
     free(brickShape);

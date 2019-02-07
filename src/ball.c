@@ -4,7 +4,6 @@
 #include <math.h>
 #include "ball.h"
 
-
 /**
  * Calculate next angle after a wall collision
  */
@@ -58,6 +57,7 @@ bool platformCollision(Ball *ball, Platform *platform)
     if (ball->x >= platformLeft && ball->x <= platformRight)
     {
         ball->angle = calculateBiasedReflexionAngle(platform->size, ball->x - platform->x, ball->angle);
+        ball->y = platform->y - 1;
 
         return true;
     }
