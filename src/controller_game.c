@@ -13,7 +13,6 @@
 #include "cli_game.h"
 #include "cli_window.h"
 
-
 void initGame(Game *game)
 {
     Ball ball;
@@ -50,6 +49,7 @@ void startGame(Game *game)
         {
             break;
         }
+        wallCollision(&game->ball, &game->wall);
         movePlatform(&game->platform, &game->window, userCommand);
         moveBallForward(&game->ball, &game->window);
         userCommand = getch();

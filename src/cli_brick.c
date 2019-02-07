@@ -6,6 +6,11 @@
 
 void drawBrick(Brick *brick)
 {
+    if (brick->life == 0)
+    {
+        return;
+    }
+
     char *brickShape = malloc(brick->size * sizeof(char) + 1);
     for (int i = 0; i < brick->size; i++)
     {

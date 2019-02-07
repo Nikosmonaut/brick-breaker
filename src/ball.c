@@ -65,6 +65,30 @@ bool platformCollision(Ball *ball, Platform *platform)
     return false;
 }
 
+void wallCollision(Ball *ball, Wall *wall)
+{
+    Brick *brick;
+    float brickLeft = 0.0;
+    float brickRight = 0.0;
+
+    for (int i = 0; i < wall->brickCount; i++)
+    {
+        brick = &wall->brickList[i];
+        if (brick->life == 0)
+        {
+            continue;
+        }
+        brickLeft = brick->x;
+        brickRight = brick->x + brick->size;
+
+        if (floor(ball->y) == floor(brick->y) && ball->x < brickRight && ball->x > brickLeft)
+        {
+            brick->life--;
+            ball->angle = calculateReflexionAngle(ball->angle, 'x');
+        }
+    }
+}
+
 static float calculateReflexionAngle(float angle, char contactAxis)
 {
     if (contactAxis == 'y')
